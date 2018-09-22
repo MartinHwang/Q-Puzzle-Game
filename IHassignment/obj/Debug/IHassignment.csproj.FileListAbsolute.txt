@@ -1,0 +1,11 @@
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.csprojAssemblyReference.cache
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.QGCPanel.resources
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.MazeDesigner.resources
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.Properties.Resources.resources
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.csproj.GenerateResource.cache
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.csproj.CoreCompileInputs.cache
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\bin\Debug\IHassignment.exe.config
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\bin\Debug\IHassignment.exe
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\bin\Debug\IHassignment.pdb
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.exe
+E:\Martin\CP LEVEL3\GPwithDS\assign1\IHassignment\IHassignment\obj\Debug\IHassignment.pdb
