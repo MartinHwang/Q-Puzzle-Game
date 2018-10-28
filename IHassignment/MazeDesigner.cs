@@ -22,7 +22,10 @@ namespace IHassignment
         int r;
         int c;
         Tile[,] g;
-
+        string message;
+        /// <summary>
+        /// Enum for selecting tool
+        /// </summary>
         enum ImageType
         {
             none = 0,
@@ -41,33 +44,59 @@ namespace IHassignment
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Event hander of button Generate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             try
             {
-                r = int.Parse(txtRows.Text);
-                c = int.Parse(txtColumns.Text);
-                Check_Num(r, c);
+                Check_Num(txtRows.Text, txtColumns.Text);
                 Grid(r, c);
+                txtColumns.Enabled = false;
+                txtRows.Enabled = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        public string Check_Num(int r, int c)
+        /// <summary>
+        /// Check if input row and column are smaller than 0
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public void Check_Num(string r, string c)
         {
-            string message = "";
-            if (r <= 0 || c <= 0)
+            message = "";
+            if (Regex.IsMatch(r, "^[a-zA-Z]{1,}$")
+                || txtRows.Text == "" || 
+                Regex.IsMatch(c, "^[a-zA-Z]{1,}$")
+                || txtColumns.Text == "")
+            {
+                message = "Please input valid number";
+                throw new Exception(message);
+            }
+            else
+            {
+                this.r = int.Parse(r);
+                this.c = int.Parse(c);
+            }
+            
+            if(this.r <= 0 || this.c <= 0)
             {
                 message = "Number must be bigger than 0";
                 throw new Exception(message);
             }
-            return message;
         }
-
+        /// <summary>
+        /// Make the grid which row and column are input
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
         public void Grid(int r, int c)
         {
             g = new Tile[r, c];
@@ -98,7 +127,11 @@ namespace IHassignment
         }
 
         ImageType imageType = new ImageType();
-
+        /// <summary>
+        /// Event hander of selecting each cell
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Tile_Click(object sender, EventArgs e)
         {
             Tile t = (Tile)sender;
@@ -221,6 +254,11 @@ namespace IHassignment
                     break;
             }
         }
+        /// <summary>
+        /// Event hander of selecting button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -261,6 +299,10 @@ namespace IHassignment
             }
 
         }
+        /// <summary>
+        /// Save grid and selected tool information
+        /// </summary>
+        /// <param name="fileName"></param>
         private void Save(string fileName)
         {
             StreamWriter sw = new StreamWriter(fileName);
@@ -278,8 +320,23 @@ namespace IHassignment
                 }
             }
             sw.Close();
-
+            txtColumns.Enabled = true;
+            txtRows.Enabled = true;
+            txtColumns.Text = "";
+            txtRows.Text = "";
+            for (int i = 0; i < g.GetLength(0); i++)
+            {
+                for (int j = 0; j < g.GetLength(1); j++)
+                {
+                    g[i,j].Dispose();
+                }
+            }
         }
+        /// <summary>
+        /// Click event hander of the Save FileToolStripMenuItem 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if ((txtRows.Text) != "" || (txtColumns.Text) != "")
@@ -292,7 +349,8 @@ namespace IHassignment
                     case DialogResult.OK:
                         string fileName = SaveFileDialog.FileName;
                         Save(fileName);
-                        MessageBox.Show($"Saved {fileName} successfully", "Save");
+                        MessageBox.Show($"Saved {fileName} successfully", 
+                            "Save");
                         break;
                     case DialogResult.Cancel:
                         break;
@@ -312,13 +370,18 @@ namespace IHassignment
             }
             else
             {
-                MessageBox.Show("Please enter Rows and Columns you want to make", "Information");
+                MessageBox.Show("Please enter Rows and Columns you want to make",
+                    "Information");
             }
         }
-
+        /// <summary>
+        /// Click event hander of the Close FileToolStripMenuItem 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
     }
 }

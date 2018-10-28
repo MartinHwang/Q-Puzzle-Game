@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace IHassignment
 {
+    /// <summary>
+    /// Derived Class that inherits PictureBox
+    /// </summary>
     class Tile: PictureBox
     {
         public int row;

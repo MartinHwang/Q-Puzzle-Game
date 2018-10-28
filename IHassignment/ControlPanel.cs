@@ -10,16 +10,24 @@ using System.Windows.Forms;
 
 namespace IHassignment
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class QGCPanel : Form
     {
         public QGCPanel()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Click event hander of the btnExit button  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult r = MessageBox.Show("Do you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult r = MessageBox.Show("Do you want to exit?", "Exit",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             switch (r)
             {
                 case DialogResult.None:
@@ -44,13 +52,21 @@ namespace IHassignment
                     break;
             }
         }
-
+        /// <summary>
+        /// Click event hander of btnDesign button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDesign_Click(object sender, EventArgs e)
         {
             MazeDesigner md = new MazeDesigner();
             md.ShowDialog();
         }
-
+        /// <summary>
+        /// Click event hander of btnplay button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPlay_Click(object sender, EventArgs e)
         {
 
